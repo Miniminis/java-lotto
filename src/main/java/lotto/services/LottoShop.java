@@ -4,19 +4,29 @@ import lotto.domains.Lotto;
 import lotto.domains.LottoResults;
 import lotto.domains.Lottos;
 import lotto.domains.WinningNumber;
-import utils.DataParser;
+
+import java.util.List;
 
 public class LottoShop {
 
-    private final WinningNumber winningNumber;
-    private final LottoResults lottoResults;
+    private final Lottos lottos;
 
-    public LottoShop(String lastWeekWinningNumberString) {
-        this.winningNumber = new WinningNumber(lastWeekWinningNumberString);
-        this.lottoResults = new LottoResults();
+    public LottoShop(int money) {
+        this.lottos = new Lottos(money);
     }
 
-    public LottoResults winner(Lottos lottos) {
+    public int numOfLottos() {
+        return lottos.numOfLotto();
+    }
+
+    public Lottos lottos() {
+        return lottos;
+    }
+
+    public LottoResults winner(List<Integer> lastWeekWinningNumbers) {
+        LottoResults lottoResults = new LottoResults();
+        WinningNumber winningNumber = new WinningNumber(lastWeekWinningNumbers);
+
         for (Lotto lotto : lottos.lottos()) {
             lottoResults.addWinner(winningNumber.numOfWinningNumberMatchCnt(lotto));
         }
@@ -24,8 +34,4 @@ public class LottoShop {
         return lottoResults;
     }
 
-    public Double profitRate(String moneyString) {
-        int money = DataParser.parseToInt(moneyString);
-        return lottoResults.profitRate(money);
-    }
 }

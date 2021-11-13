@@ -1,7 +1,5 @@
 package lotto.domains;
 
-import utils.DataParser;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,8 +10,8 @@ public class Lottos {
 
     private final List<Lotto> lottos;
 
-    public Lottos(String moneyString) {
-        this.lottos = readyLottos(numOfLotto(moneyString));
+    public Lottos(int money) {
+        this.lottos = readyLottos(numOfLotto(money));
     }
 
     public int numOfLotto() {
@@ -24,8 +22,10 @@ public class Lottos {
         return lottos;
     }
 
-    private int numOfLotto(String moneyString) {
-        int money = DataParser.parseToInt(moneyString);
+    private int numOfLotto(int money) {
+        if (money <= 1000) {
+            throw new IllegalArgumentException("로또 최소 금액은 1000원 입니다.");
+        }
         return money / LOTTO_PRICE;
     }
 

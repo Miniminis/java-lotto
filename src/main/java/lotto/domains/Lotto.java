@@ -10,7 +10,7 @@ public class Lotto {
     private final List<Integer> lottoNumbers;
 
     public Lotto() {
-        this.lottoNumbers = shuffledNumbers();
+        this.lottoNumbers = shuffledLottoNumbers();
     }
 
     public Lotto(List<Integer> lottoNumbers) {
@@ -33,14 +33,14 @@ public class Lotto {
         return lottoNumbers.get(i);
     }
 
-    private List<Integer> shuffledNumbers() {
+    private List<Integer> shuffledLottoNumbers() {
         List<Integer> totalLottoNumbers = totalLottoNumbers();
         Collections.shuffle(totalLottoNumbers);
 
-        List<Integer> lottoShuffledNumbers = totalLottoNumbers.subList(0, 6);
-        Collections.sort(lottoShuffledNumbers);
+        List<Integer> shuffledLottoNumbers = totalLottoNumbers.subList(0, 6);
+        Collections.sort(shuffledLottoNumbers);
 
-        return lottoShuffledNumbers;
+        return shuffledLottoNumbers;
     }
 
     private List<Integer> totalLottoNumbers() {

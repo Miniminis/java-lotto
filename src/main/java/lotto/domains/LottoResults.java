@@ -38,7 +38,7 @@ public class LottoResults {
         lottoResults.forEach(lottoResult -> lottoResult.addWinner(matchCnt));
     }
 
-    public List<LottoResult> getLottoResults() {
+    public List<LottoResult> lottoResults() {
         return this.lottoResults;
     }
 
@@ -48,6 +48,7 @@ public class LottoResults {
                 .sum();
 
         double profitRate = totalPrize / money;
+
         return Math.round(profitRate * 100) / 100.0 ;
     }
 
@@ -56,11 +57,11 @@ public class LottoResults {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LottoResults that = (LottoResults) o;
-        return Objects.equals(getLottoResults(), that.getLottoResults());
+        return Objects.equals(lottoResults(), that.lottoResults());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLottoResults());
+        return Objects.hash(lottoResults());
     }
 }

@@ -4,6 +4,7 @@ import utils.DataParser;
 import utils.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -14,16 +15,6 @@ public class WinningNumber {
 
     public WinningNumber(List<Integer> winningNumbers) {
         this.winningNumbers = winningNumbers;
-    }
-
-    public WinningNumber(String numberArrString) {
-        winningNumbers = new ArrayList<>();
-
-        String[] numbers = StringUtil.spliter(numberArrString);
-        
-        for (String number : numbers) {
-            winningNumbers.add(DataParser.parseToInt(number));
-        }
     }
 
     public int numOfWinningNumberMatchCnt(Lotto lotto) {

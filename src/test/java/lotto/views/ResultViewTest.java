@@ -8,7 +8,7 @@ class ResultViewTest {
 
     @Test
     void 생성된_로또_출력() {
-        Lottos lottos = new Lottos("14000");
+        Lottos lottos = new Lottos(14000);
         ResultView.printLottos(lottos);
     }
 

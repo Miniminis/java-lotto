@@ -25,7 +25,7 @@ public class ResultView {
         System.out.println("당첨 통계");
         System.out.println("---------");
 
-        for (LottoResult lottoResult : lottoResults.getLottoResults()) {
+        for (LottoResult lottoResult : lottoResults.lottoResults()) {
             System.out.println(lottoResult.detailedInfo());
         }
     }
