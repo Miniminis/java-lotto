@@ -3,6 +3,7 @@ package step02.domain;
 import java.util.Map;
 
 public class LotteryRunner {
+
     public LotteryRunner(WinningNumbers winningNumbers) {
 
     }

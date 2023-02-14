@@ -1,8 +1,30 @@
 package step02.domain;
 
+import step02.util.ErrorMessage;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class LotteryGroup {
 
-    public LotteryGroup(int inputPurchasePrice) {
+    private final List<Lottery> lotteries;
 
+    public LotteryGroup(int numOfLottery) {
+        validateNumOfLottery(numOfLottery);
+
+        lotteries = IntStream.range(0, numOfLottery)
+                .mapToObj(n -> new Lottery())
+                .collect(Collectors.toList());
+    }
+
+    private void validateNumOfLottery(int numOfLottery) {
+        if (numOfLottery <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.ZERO_NUM_OF_LOTTERY);
+        }
+    }
+
+    public int size() {
+        return lotteries.size();
     }
 }
