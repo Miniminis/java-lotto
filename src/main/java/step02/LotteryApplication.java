@@ -14,6 +14,8 @@ public class LotteryApplication {
 
     public static void main(String[] args) {
         int numOfLottery = InputView.inputPurchasePrice();
+        ResultView.print(numOfLottery);
+
         LotteryGroup lotteryGroup = new LotteryGroup(numOfLottery);
         ResultView.print(lotteryGroup);
 
