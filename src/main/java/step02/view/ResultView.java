@@ -6,6 +6,7 @@ import step02.domain.ProfitRate;
 import step02.util.ScreenText;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ResultView {
 
@@ -14,11 +15,18 @@ public class ResultView {
     }
 
     public static void print(Map<LotteryStandard, Integer> result) {
+        System.out.println(ScreenText.RESULT_TITLE);
+        System.out.println(ScreenText.TITLE_LINE);
 
+        new TreeMap<>(result).forEach((lotteryStandard, integer) -> {
+            System.out.println(
+                    String.format(ScreenText.MATCH_RESULT, lotteryStandard.getCount(), lotteryStandard.getAmount(), integer)
+            );
+        });
     }
 
     public static void print(ProfitRate profitRate) {
-
+        System.out.println(profitRate);
     }
 
     public static void print(int numOfLottery) {

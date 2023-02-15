@@ -24,7 +24,7 @@ public class LotteryApplication {
         LotteryRunner lotteryRunner = new LotteryRunner(winningNumbers, lotteryGroup);
 
         Map<LotteryStandard, Integer> result = lotteryRunner.findWinningResult();
-        ProfitRate profitRate = lotteryRunner.calculateProfitRate(result);
+        ProfitRate profitRate = lotteryRunner.calculateProfitRate(numOfLottery, result);
 
         ResultView.print(result);
         ResultView.print(profitRate);
