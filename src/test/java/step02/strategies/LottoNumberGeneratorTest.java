@@ -1,4 +1,4 @@
-package step02.domain;
+package step02.strategies;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ class LottoNumberGeneratorTest {
 
     @Test
     void _1이상_45이하의_숫자를_랜덤으로_생성하여_반환한다() {
-        int picked = LottoNumberGenerator.pick();
+        int picked = new LottoNumberGenerator().pick(0);
         System.out.println(picked);
 
         assertThat(picked >= 1 && picked <= 45).isTrue();

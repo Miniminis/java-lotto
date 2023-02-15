@@ -2,19 +2,38 @@ package step02.domain;
 
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
+import step02.util.ErrorMessage;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("당첨번호는")
 class WinningNumbersTest {
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void 빈값이면_오류를_반환한다(String input) {
+        assertThatThrownBy(() -> new WinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NULL_OR_EMPTY);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 2, 3, 4, !, @", "a, b, c, d, 2, 3"})
+    void 숫자형식이_아니면_오류를_반환한다(String input) {
+        assertThatThrownBy(() -> new WinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_WRONG_RANGE);
+    }
 
     @ParameterizedTest
     @MethodSource

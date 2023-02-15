@@ -1,8 +1,10 @@
 package step02.domain;
 
+import step02.strategies.NumberGenerator;
 import step02.util.CommonText;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,14 +15,34 @@ public class Lottery {
 
     private final List<LottoNumber> numbers;
 
-    public Lottery() {
+    public Lottery(NumberGenerator numberGenerator) {
         numbers = IntStream.range(FIRST_INDEX, LAST_INDEX)
-                .mapToObj(n -> new LottoNumber(LottoNumberGenerator.pick()))
+                .mapToObj(n -> new LottoNumber(numberGenerator.pick(n)))
                 .collect(Collectors.toList());
     }
 
     public int size() {
         return numbers.size();
+    }
+
+    private String suffix(int index, int lastIndex) {
+        if (index != lastIndex) {
+            return CommonText.COMMA + CommonText.BLANK;
+        }
+        return "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lottery lottery = (Lottery) o;
+        return Objects.equals(numbers, lottery.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 
     @Override
@@ -39,10 +61,16 @@ public class Lottery {
         return sb.toString();
     }
 
-    private String suffix(int index, int lastIndex) {
-        if (index != lastIndex) {
-            return CommonText.COMMA + CommonText.BLANK;
+    public int matchCount(WinningNumbers winningNumbers) {
+        int matchCount = 0;
+
+        for (LottoNumber lottoNumber : winningNumbers.values()) {
+            matchCount += contains(lottoNumber);
         }
-        return "";
+        return matchCount;
+    }
+
+    private int contains(LottoNumber lottoNumber) {
+        return numbers.contains(lottoNumber) ? 1 : 0;
     }
 }
