@@ -8,5 +8,6 @@ public class ErrorMessage {
     public static final String PRICE_RANGE = "구입금액은 1,000원 이상의 범위로 입력해주세요.";
 
     public static final String ZERO_NUM_OF_LOTTERY = "로또의 개수는 적어도 1개 이상이어야 합니다.";
-    public static final String LOTTO_NUMBER_WRONG_RANGE = "로또 번호는 1이상 45이하의 값으로 이루어져야합니다.";
+    public static final String LOTTO_NUMBER_WRONG_RANGE = "로또 번호는 1이상 45이하의 숫자로 이루어져야합니다.";
+
 }

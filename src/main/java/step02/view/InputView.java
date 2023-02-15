@@ -18,6 +18,7 @@ public class InputView {
     }
 
     public static WinningNumbers inputLastWeekWinningNumber() {
-        return new WinningNumbers();
+        System.out.println(ScreenText.QUESTION_LAST_WEEK_WINNING_NUMBER);
+        return new WinningNumbers(sc.nextLine());
     }
 }
