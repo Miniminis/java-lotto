@@ -16,4 +16,9 @@ class LotteryTest {
         assertThat(lottery.size()).isEqualTo(LOTTERY_NUMBER_LIMIT);
     }
 
+    @Test
+    void toString을_호출하면_로또의_6개숫자가_출력된다() {
+        Lottery lottery = new Lottery();
+        System.out.println(lottery);
+    }
 }

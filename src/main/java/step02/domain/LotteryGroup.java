@@ -27,4 +27,15 @@ public class LotteryGroup {
     public int size() {
         return lotteries.size();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (Lottery lottery : lotteries) {
+            sb.append(lottery).append("\n");
+        }
+
+        return sb.toString();
+    }
 }

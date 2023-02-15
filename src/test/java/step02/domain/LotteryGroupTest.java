@@ -1,6 +1,7 @@
 package step02.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import step02.util.ErrorMessage;
@@ -24,5 +25,11 @@ class LotteryGroupTest {
         assertThatThrownBy(() -> new LotteryGroup(numOfLottery))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.ZERO_NUM_OF_LOTTERY);
+    }
+
+    @Test
+    void toString을_호출하면_로또그룹이_출력된다() {
+        LotteryGroup lotteryGroup = new LotteryGroup(3);
+        System.out.println(lotteryGroup);
     }
 }

@@ -13,6 +13,7 @@ public class InputView {
     public static int inputPurchasePrice() {
         System.out.println(ScreenText.QUESTION_PURCHASE_PRICE);
         LotteryPrice lotteryPrice = new LotteryPrice(sc.nextLine());
+
         return lotteryPrice.numOrLottery();
     }
 

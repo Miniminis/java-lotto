@@ -26,4 +26,10 @@ class LottoNumberTest {
                 .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_WRONG_RANGE);
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10, 45})
+    void toString을_호출하면_자기자신의_값을_반환한다(int number) {
+        LottoNumber lottoNumber = new LottoNumber(number);
+        assertThat(lottoNumber.toString()).isEqualTo(String.valueOf(number));
+    }
 }

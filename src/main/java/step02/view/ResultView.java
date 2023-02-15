@@ -10,7 +10,7 @@ import java.util.Map;
 public class ResultView {
 
     public static void print(LotteryGroup lotteryGroup) {
-
+        System.out.println(lotteryGroup);
     }
 
     public static void print(Map<LotteryStandard, Integer> result) {
