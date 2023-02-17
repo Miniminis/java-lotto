@@ -4,8 +4,8 @@ public class ProfitRate {
 
     private final double rate;
 
-    public ProfitRate(int totalCount, int numOfLottery) {
-        this.rate = (double) totalCount / (double) numOfLottery;
+    public ProfitRate(int totalWinningReward, LotteryPrice lotteryPrice) {
+        this.rate = (double) totalWinningReward / (double) lotteryPrice.value();
     }
 
     @Override

@@ -11,4 +11,5 @@ public class ScreenText {
     public static final String TITLE_LINE = "--------";
     public static final String MATCH_RESULT = "%s개 일치 (%s원)- %s개";
 
+    public static final String RESULT_WINNING_RATE = "총 수익률은 %s입니다.";
 }

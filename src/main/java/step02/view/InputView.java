@@ -10,11 +10,9 @@ public class InputView {
 
     private static final Scanner sc = new Scanner(System.in);
 
-    public static int inputPurchasePrice() {
+    public static LotteryPrice inputPurchasePrice() {
         System.out.println(ScreenText.QUESTION_PURCHASE_PRICE);
-        LotteryPrice lotteryPrice = new LotteryPrice(sc.nextLine());
-
-        return lotteryPrice.numOrLottery();
+        return new LotteryPrice(sc.nextLine());
     }
 
     public static WinningNumbers inputLastWeekWinningNumber() {

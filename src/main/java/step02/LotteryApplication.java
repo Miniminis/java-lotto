@@ -1,6 +1,7 @@
 package step02;
 
 import step02.domain.LotteryGroup;
+import step02.domain.LotteryPrice;
 import step02.domain.LotteryRunner;
 import step02.domain.LotteryStandard;
 import step02.domain.ProfitRate;
@@ -14,7 +15,8 @@ import java.util.Map;
 public class LotteryApplication {
 
     public static void main(String[] args) {
-        int numOfLottery = InputView.inputPurchasePrice();
+        LotteryPrice lotteryPrice = InputView.inputPurchasePrice();
+        int numOfLottery = lotteryPrice.numOrLottery();
         ResultView.print(numOfLottery);
 
         LotteryGroup lotteryGroup = new LotteryGroup(numOfLottery, new LottoNumberGenerator());
@@ -24,7 +26,7 @@ public class LotteryApplication {
         LotteryRunner lotteryRunner = new LotteryRunner(winningNumbers, lotteryGroup);
 
         Map<LotteryStandard, Integer> result = lotteryRunner.findWinningResult();
-        ProfitRate profitRate = lotteryRunner.calculateProfitRate(numOfLottery, result);
+        ProfitRate profitRate = lotteryRunner.calculateProfitRate(lotteryPrice, result);
 
         ResultView.print(result);
         ResultView.print(profitRate);

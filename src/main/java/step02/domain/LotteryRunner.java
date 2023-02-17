@@ -18,14 +18,14 @@ public class LotteryRunner {
         return lotteryGroup.matchResult(winningNumbers);
     }
 
-    public ProfitRate calculateProfitRate(int numOfLottery, Map<LotteryStandard, Integer> result) {
+    public ProfitRate calculateProfitRate(LotteryPrice lotteryPrice, Map<LotteryStandard, Integer> result) {
         List<LotteryStandard> resultKeys = new ArrayList<>(result.keySet());
 
-        int totalCount = 0;
+        int totalWinningReward = 0;
         for (LotteryStandard key : resultKeys) {
-            totalCount += result.get(key);
+            totalWinningReward += result.get(key) * key.getAmount();
         }
 
-        return new ProfitRate(totalCount, numOfLottery);
+        return new ProfitRate(totalWinningReward, lotteryPrice);
     }
 }

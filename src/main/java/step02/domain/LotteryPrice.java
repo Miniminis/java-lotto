@@ -35,4 +35,7 @@ public class LotteryPrice {
         return price / PRICE_UNIT;
     }
 
+    public int value() {
+        return price;
+    }
 }

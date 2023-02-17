@@ -26,7 +26,7 @@ public class ResultView {
     }
 
     public static void print(ProfitRate profitRate) {
-        System.out.println(profitRate);
+        System.out.println(String.format(ScreenText.RESULT_WINNING_RATE, profitRate));
     }
 
     public static void print(int numOfLottery) {
