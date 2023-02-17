@@ -1,6 +1,8 @@
 package step02.strategies;
 
+import java.util.List;
+
 @FunctionalInterface
 public interface NumberGenerator {
-    int pick(int index);
+    List<Integer> pickNumbers();
 }

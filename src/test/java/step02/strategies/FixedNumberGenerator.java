@@ -9,7 +9,7 @@ public class FixedNumberGenerator implements NumberGenerator {
     private final List<Integer> numbers;
 
     public FixedNumberGenerator() {
-        this(Lists.newArrayList(1, 2, 3, 4, 5, 6));
+        this(Lists.newArrayList(10, 45, 7, 20, 5, 40));
     }
 
     public FixedNumberGenerator(List<Integer> numbers) {
@@ -17,7 +17,7 @@ public class FixedNumberGenerator implements NumberGenerator {
     }
 
     @Override
-    public int pick(int index) {
-        return numbers.get(index);
+    public List<Integer> pickNumbers() {
+        return numbers;
     }
 }

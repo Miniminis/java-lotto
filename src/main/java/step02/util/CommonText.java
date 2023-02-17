@@ -3,6 +3,7 @@ package step02.util;
 public class CommonText {
 
     public static final String COMMA = ",";
+    public static final String EMPTY = "";
     public static final String BLANK = " ";
     public static final String NEWLINE = "\n";
 

@@ -1,11 +1,12 @@
 package step02.domain;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import step02.providers.TestProviders;
 import step02.strategies.FixedNumberGenerator;
-import step02.util.CommonText;
 import step02.util.ErrorMessage;
 
 import java.util.Map;
@@ -16,12 +17,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("로또 그룹은")
 class LotteryGroupTest {
 
-    private static final String STR_LOTTO_NUMBERS = "[1, 2, 3, 4, 5, 6]";
-
     @Test
     void 당첨번호와_일치하는_로또에_대해_통계를_낸다() {
-        LotteryGroup lotteryGroup = new LotteryGroup(1, new FixedNumberGenerator());
-        Map<LotteryStandard, Integer> matchResult = lotteryGroup.matchResult(new WinningNumbers("1, 2, 3, 4, 44, 45"));
+        LotteryGroup lotteryGroup = new LotteryGroup(1, new FixedNumberGenerator(Lists.newArrayList(10, 45, 7, 20, 5, 40)));
+        Map<LotteryStandard, Integer> matchResult = lotteryGroup.matchResult(new WinningNumbers(TestProviders.WINNING_NUMBER));
 
         assertThat(matchResult.get(LotteryStandard.THREE)).isEqualTo(0);
         assertThat(matchResult.get(LotteryStandard.FOUR)).isEqualTo(1);
@@ -50,11 +49,4 @@ class LotteryGroupTest {
         System.out.println(lotteryGroup);
     }
 
-    private String getLotteryGroup() {
-        return new StringBuilder()
-                .append(STR_LOTTO_NUMBERS).append(CommonText.NEWLINE)
-                .append(STR_LOTTO_NUMBERS).append(CommonText.NEWLINE)
-                .append(STR_LOTTO_NUMBERS).append(CommonText.NEWLINE)
-                .toString();
-    }
 }

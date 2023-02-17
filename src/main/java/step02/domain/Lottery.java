@@ -1,23 +1,18 @@
 package step02.domain;
 
-import step02.strategies.NumberGenerator;
 import step02.util.CommonText;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Lottery {
 
-    private static final int FIRST_INDEX = 0;
-    private static final int LAST_INDEX = 6;
-
     private final List<LottoNumber> numbers;
 
-    public Lottery(NumberGenerator numberGenerator) {
-        numbers = IntStream.range(FIRST_INDEX, LAST_INDEX)
-                .mapToObj(n -> new LottoNumber(numberGenerator.pick(n)))
+    public Lottery(List<Integer> lottoNumbers) {
+        numbers = lottoNumbers.stream()
+                .map(LottoNumber::new)
                 .collect(Collectors.toList());
     }
 
@@ -29,7 +24,7 @@ public class Lottery {
         if (index != lastIndex) {
             return CommonText.COMMA + CommonText.BLANK;
         }
-        return "";
+        return CommonText.EMPTY;
     }
 
     @Override

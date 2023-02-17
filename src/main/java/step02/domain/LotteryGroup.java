@@ -11,15 +11,13 @@ import java.util.stream.IntStream;
 
 public class LotteryGroup {
 
-    private static final int WINNING_LIMIT = 3;
-
     private final List<Lottery> lotteries;
 
     public LotteryGroup(int numOfLottery, NumberGenerator numberGenerator) {
         validateNumOfLottery(numOfLottery);
 
         lotteries = IntStream.range(0, numOfLottery)
-                .mapToObj(n -> new Lottery(numberGenerator))
+                .mapToObj(n -> new Lottery(numberGenerator.pickNumbers()))
                 .collect(Collectors.toList());
     }
 
