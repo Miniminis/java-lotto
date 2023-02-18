@@ -1,32 +1,33 @@
 package xlffm3.domain;
 
 import xlffm3.utils.CommonValue;
+import xlffm3.utils.ErrorMessage;
 
 import java.util.Objects;
 
 public class PurchasePrice {
 
-    private static final int MINIMUM_PRICE = 1000;
+    public static final long LOTTERY_TICKET_PRICE = 1000;
 
     private final long purchasePrice;
 
-    private PurchasePrice(long purchasePrice) {
+    public PurchasePrice(long purchasePrice) {
         validatePurchasePrice(purchasePrice);
         this.purchasePrice = purchasePrice;
     }
 
-    public static PurchasePrice of(long purchasePrice) {
-        return new PurchasePrice(purchasePrice);
+    private void validatePurchasePrice(long purchasePrice) {
+        if (purchasePrice < LOTTERY_TICKET_PRICE) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_BUDGET);
+        }
+
+        if (purchasePrice % LOTTERY_TICKET_PRICE != CommonValue.ZERO) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY);
+        }
     }
 
-    private void validatePurchasePrice(long purchasePrice) {
-        if (purchasePrice < MINIMUM_PRICE) {
-            throw new IllegalArgumentException();
-        }
-
-        if (purchasePrice % MINIMUM_PRICE != CommonValue.ZERO) {
-            throw new IllegalArgumentException();
-        }
+    public boolean isWithinBudget(long manualTicketPrice) {
+        return manualTicketPrice <= purchasePrice;
     }
 
     @Override
